@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class UserStoriesTest extends TestCase
@@ -15,6 +16,9 @@ class UserStoriesTest extends TestCase
 
     public function test_user_can_view_product_list()
     {
+        Sanctum::actingAs(
+            User::factory()->create()
+        );
         Product::factory()->count(5)->create();
 
         $response = $this->getJson('/api/products');

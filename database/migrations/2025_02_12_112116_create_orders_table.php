@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->enum('status', ['unpaid', 'paid', 'processing', 'sent', 'closed'])->default('paid');
+            $table->decimal('total_price', 8, 2)->default(0);
             $table->timestamps();
         });
     }
