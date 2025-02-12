@@ -58,7 +58,7 @@ class UserStoriesTest extends TestCase
             'quantity' => 1
         ]);
 
-        $response = $this->actingAs($user)->postJson('/api/cart/checkout');
+        $response = $this->actingAs($user)->postJson('/api/order/checkout');
 
         $response->assertStatus(200)->assertJson(["message" => "Order created"]);
 

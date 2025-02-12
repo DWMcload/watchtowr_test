@@ -14,12 +14,14 @@ Route::get('/user', function (Request $request) {
 Route::post('/register', [AuthController::class, 'createUser']);
 Route::post('/login', [AuthController::class, 'loginUser']);
 
-Route::get('/cart', [CartController::class, 'index'])->middleware('auth:sanctum');
-Route::get('/orders', [OrderController::class, 'index'])->middleware('auth:sanctum');
+Route::middleware(['auth:sanctum'])->group(function () {
 
-Route::post('/cart/add', [CartController::class, 'addProduct'])->middleware('auth:sanctum');
-Route::post('/cart/remove', [CartController::class, 'removeProduct'])->middleware('auth:sanctum');
-Route::post('/order/checkout', [OrderController::class, 'checkout'])->middleware('auth:sanctum');
+    Route::get('/cart', [CartController::class, 'index']);
+    Route::post('/cart/add', [CartController::class, 'addProduct']);
+    Route::post('/cart/remove', [CartController::class, 'removeProduct']);
 
+    Route::get('/orders', [OrderController::class, 'index']);
+    Route::post('/order/checkout', [OrderController::class, 'checkout']);
 
-Route::apiResource('products', ProductController::class)->middleware('auth:sanctum');
+    Route::apiResource('products', ProductController::class);
+});
