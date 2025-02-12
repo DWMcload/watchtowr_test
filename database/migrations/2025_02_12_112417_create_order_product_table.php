@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('quantity');
             $table->double('price');
             $table->timestamps();
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('restrict')->onUpdate('cascade');
         });
     }
 

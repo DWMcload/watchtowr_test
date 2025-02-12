@@ -17,6 +17,7 @@ return new class extends Migration
             $table->enum('status', ['unpaid', 'paid', 'processing', 'sent', 'closed'])->default('paid');
             $table->decimal('total_price', 8, 2)->default(0);
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
