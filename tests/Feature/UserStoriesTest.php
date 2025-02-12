@@ -31,15 +31,19 @@ class UserStoriesTest extends TestCase
         $user = User::factory()->create();
         $product = Product::factory()->create();
 
-        $response = $this->actingAs($user)->postJson('/api/cart', [
+        $response = $this->actingAs($user)->postJson('/api/add-to-cart', [
             'product_id' => $product->id,
             'quantity' => 1
         ]);
 
-        $response->assertStatus(201);
+        $response->assertStatus(200)->assertJson(["message" => "Product added"]);
         $this->assertDatabaseHas('carts', [
             'user_id' => $user->id,
+            'cart_id' => 1
+        ]);
+        $this->assertDatabaseHas('cart_product', [
             'product_id' => $product->id,
+            'cart_id' => 1,
             'quantity' => 1
         ]);
     }
