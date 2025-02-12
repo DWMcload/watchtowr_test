@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="6.5.0@38fc8444edf0cebc9205296ee6e30e906ade783b">
+  <file src="app/Actions/Fortify/ResetUserPassword.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[reset]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Actions/Fortify/UpdateUserPassword.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[update]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Actions/Fortify/UpdateUserProfileInformation.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[update]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Actions/Jetstream/DeleteUser.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[delete]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Http/Controllers/Controller.php">
+    <UnusedClass>
+      <code><![CDATA[Controller]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Models/User.php">
+    <MissingTemplateParam>
+      <code><![CDATA[HasApiTokens]]></code>
+    </MissingTemplateParam>
+  </file>
+  <file src="app/Providers/AppServiceProvider.php">
+    <UnusedClass>
+      <code><![CDATA[AppServiceProvider]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Providers/FortifyServiceProvider.php">
+    <UnusedClass>
+      <code><![CDATA[FortifyServiceProvider]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Providers/JetstreamServiceProvider.php">
+    <UnusedClass>
+      <code><![CDATA[JetstreamServiceProvider]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/View/Components/AppLayout.php">
+    <UnusedClass>
+      <code><![CDATA[AppLayout]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/View/Components/GuestLayout.php">
+    <UnusedClass>
+      <code><![CDATA[GuestLayout]]></code>
+    </UnusedClass>
+  </file>
+  <file src="database/factories/UserFactory.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[unverified]]></code>
+      <code><![CDATA[withPersonalTeam]]></code>
+    </PossiblyUnusedMethod>
+    <PossiblyUnusedParam>
+      <code><![CDATA[$callback]]></code>
+    </PossiblyUnusedParam>
+    <UndefinedClass>
+      <code><![CDATA[Team]]></code>
+    </UndefinedClass>
+    <UnusedClosureParam>
+      <code><![CDATA[$attributes]]></code>
+    </UnusedClosureParam>
+  </file>
+  <file src="database/seeders/DatabaseSeeder.php">
+    <UnusedClass>
+      <code><![CDATA[DatabaseSeeder]]></code>
+    </UnusedClass>
+  </file>
+</files>
