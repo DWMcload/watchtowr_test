@@ -52,13 +52,20 @@ class UserStoriesTest extends TestCase
     {
         $user = User::factory()->create();
         $product = Product::factory()->create();
-        Cart::create([ 'user_id' => $user->id, 'product_id' => $product->id, 'quantity' => 1 ]);
+
+        //Cart::create([ 'user_id' => $user->id, 'product_id' => $product->id, 'quantity' => 1 ]);
+
+        $this->actingAs($user)->postJson('/api/add-to-cart', [
+            'product_id' => $product->id,
+            'quantity' => 1
+        ]);
 
         $response = $this->actingAs($user)->postJson('/api/checkout');
 
-        $response->assertStatus(200);
-        $this->assertDatabaseHas('orders', [ 'user_id' => $user->id ]);
-        $this->assertDatabaseMissing('carts', [ 'user_id' => $user->id ]);
+        $response->assertStatus(200)->assertJson(["message" => "Order created"]);
+
+        $this->assertDatabaseHas('orders', ['user_id' => $user->id, 'order_id' => $response->json('order_id')]);
+        $this->assertDatabaseMissing('carts', ['user_id' => $user->id]);
     }
 
     public function test_user_can_view_orders()
