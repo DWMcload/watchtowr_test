@@ -17,9 +17,9 @@ Route::post('/login', [AuthController::class, 'loginUser']);
 Route::get('/cart', [CartController::class, 'index'])->middleware('auth:sanctum');
 Route::get('/orders', [OrderController::class, 'index'])->middleware('auth:sanctum');
 
-Route::post('/add-to-cart', [CartController::class, 'addProduct'])->middleware('auth:sanctum');
-Route::post('/remove_from_cart', [CartController::class, 'removeProduct'])->middleware('auth:sanctum');
-Route::post('/checkout', [OrderController::class, 'checkout'])->middleware('auth:sanctum');
+Route::post('/cart/add', [CartController::class, 'addProduct'])->middleware('auth:sanctum');
+Route::post('/cart/remove', [CartController::class, 'removeProduct'])->middleware('auth:sanctum');
+Route::post('/cart/checkout', [OrderController::class, 'checkout'])->middleware('auth:sanctum');
 
 
 Route::apiResource('products', ProductController::class)->middleware('auth:sanctum');

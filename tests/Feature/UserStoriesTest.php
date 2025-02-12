@@ -31,7 +31,7 @@ class UserStoriesTest extends TestCase
         $user = User::factory()->create();
         $product = Product::factory()->create();
 
-        $response = $this->actingAs($user)->postJson('/api/add-to-cart', [
+        $response = $this->actingAs($user)->postJson('/api/cart/add', [
             'product_id' => $product->id,
             'quantity' => 1
         ]);
@@ -39,7 +39,7 @@ class UserStoriesTest extends TestCase
         $response->assertStatus(200)->assertJson(["message" => "Product added"]);
         $this->assertDatabaseHas('carts', [
             'user_id' => $user->id,
-            'cart_id' => 1
+            'id' => 1
         ]);
         $this->assertDatabaseHas('cart_product', [
             'product_id' => $product->id,
@@ -53,18 +53,16 @@ class UserStoriesTest extends TestCase
         $user = User::factory()->create();
         $product = Product::factory()->create();
 
-        //Cart::create([ 'user_id' => $user->id, 'product_id' => $product->id, 'quantity' => 1 ]);
-
-        $this->actingAs($user)->postJson('/api/add-to-cart', [
+        $this->actingAs($user)->postJson('/api/cart/add', [
             'product_id' => $product->id,
             'quantity' => 1
         ]);
 
-        $response = $this->actingAs($user)->postJson('/api/checkout');
+        $response = $this->actingAs($user)->postJson('/api/cart/checkout');
 
         $response->assertStatus(200)->assertJson(["message" => "Order created"]);
 
-        $this->assertDatabaseHas('orders', ['user_id' => $user->id, 'order_id' => $response->json('order_id')]);
+        $this->assertDatabaseHas('orders', ['user_id' => $user->id, 'id' => 1]);
         $this->assertDatabaseMissing('carts', ['user_id' => $user->id]);
     }
 
