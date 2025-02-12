@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class AddProductRequest extends FormRequest
+class AddProductRequest extends JsonRequest
 {
     public function authorize(): bool
     {

@@ -19,7 +19,7 @@ Route::get('/orders', [OrderController::class, 'index'])->middleware('auth:sanct
 
 Route::post('/cart/add', [CartController::class, 'addProduct'])->middleware('auth:sanctum');
 Route::post('/cart/remove', [CartController::class, 'removeProduct'])->middleware('auth:sanctum');
-Route::post('/cart/checkout', [OrderController::class, 'checkout'])->middleware('auth:sanctum');
+Route::post('/order/checkout', [OrderController::class, 'checkout'])->middleware('auth:sanctum');
 
 
 Route::apiResource('products', ProductController::class)->middleware('auth:sanctum');

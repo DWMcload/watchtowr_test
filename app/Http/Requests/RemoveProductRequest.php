@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RemoveProductRequest extends FormRequest
+class RemoveProductRequest extends JsonRequest
 {
     public function authorize(): bool
     {
